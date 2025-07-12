@@ -174,3 +174,43 @@ buttons.forEach(btn => {
     })
 })
 
+function handlePressKey(e) {
+    const key = e.key;
+    console.log("Key pressed:", key);
+
+    const numberButtons = document.querySelectorAll('.btn[data-action="number"]');
+    const operatorButtons = document.querySelectorAll('.btn[data-action="operator"]');
+
+    if (!isNaN(key)) {
+        const btn = Array.from(numberButtons).find(btn => btn.dataset.number === key);
+        if (btn) {
+            // Simulate Click
+            simulateClick(btn);
+            handleInput(btn);
+        }
+    } else if (['+', '-', '*', '/'].includes(key)) {
+        const operatorMap = {
+            '+': 'add',
+            '-': 'subtract',
+            '*': 'multiply',
+            '/': 'divide'
+        };
+        const btn = Array.from(operatorButtons).find(btn => btn.dataset.operator === operatorMap[key]);
+        if (btn) {
+            simulateClick(btn);
+            handleOperator(btn)
+
+        };
+    } else if (key === 'Enter' || key === '=') {
+        evaluate();
+    } else if (key === 'Backspace') {
+        deleteLast();
+    } else if (key === 'Escape' || key === 'c') {
+        resetState();
+    } else if (key === '.') {
+        addDecimal();
+    }
+}
+
+document.addEventListener('keydown', handlePressKey);
+
