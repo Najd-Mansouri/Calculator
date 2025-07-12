@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    background-color: white;
+}
+
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 310px;
+    height: 500px;
+    background-color: #1C1C1C;
+    border-radius: 25px;
+    border: 1px solid #333;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+
+.display {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 80px;
+    font-size: 48px;
+    overflow: hidden;
+    padding: 20px;
+    color: white;
+}
+
+
+.btn {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #505050;
+    color: white;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+.btn[data-action='number'] {
+    background-color: #505050;
+}
+
+.btn[data-action='operator'],
+.btn[data-action='calculate'] {
+    background-color: #FF9500;
+}
+
+.btn[data-number='0'] {
+    width: 125px;
+    border-radius: 37.5px;
+    text-align: left;
+    padding-left: 25px;
+}
+
+.btn[data-action='clear'],
+.btn[data-action='sign'],
+.btn[data-action='delete'] {
+    background-color: #D4D4D2;
+    color: #000000;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.btn.active {
+    filter: brightness(1.2);
+    transform: scale(0.95);
+}
